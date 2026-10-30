@@ -1,0 +1,6 @@
+Reserva Ana: 1
+Reserva Luis rechazada: Error: El asiento F6 ya est� ocupado.
+Ocupados: [F5, F6]
+Precio Ana (socio): 20.4
+Cancelar 1: true
+Cancelar 99: false
