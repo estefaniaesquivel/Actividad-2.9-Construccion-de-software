@@ -15,7 +15,11 @@ public class Reserva {
         this.asientos = asientos;
     }
 
-    public void setCancelada(boolean cancelada) {
-        this.cancelada = cancelada;
+    //se usó Remove setting method (problema 12)
+    // refactorización: se eliminó el método setCancelada(boolean) genérico y se reemplazó 
+    // por un método con nombre claro y orientado al dominio (cancelar) que encapsula 
+    // el cambio de estado de la reserva.
+    public void cancelar() {
+        this.cancelada = true;
     }
 }

@@ -3,12 +3,12 @@ public class Main {
         SistemaReservas s = new SistemaReservas();
         Funcion f = new Funcion("Interestelar", 3, "20:30", 12.0);
 
-        int r1 = s.hacer("Ana", "ana@mail.com", true, f,
+        int r1 = s.crearReserva("Ana", "ana@mail.com", true, f,
                 new char[]{'F', 'F'}, new int[]{5, 6}, false, "App");
         System.out.println("Reserva Ana: " + r1);
 
         // F7 se marca como ocupado antes de fallar en F6 (bug)
-        int r2 = s.hacer("Luis", "luis@mail.com", false, f,
+        int r2 = s.crearReserva("Luis", "luis@mail.com", false, f,
                 new char[]{'F', 'F'}, new int[]{7, 6}, false, "Taquilla");
         System.out.println("Reserva Luis: " + r2);
 
