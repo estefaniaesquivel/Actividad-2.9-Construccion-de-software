@@ -16,6 +16,11 @@ public class Main {
         } catch (IllegalStateException e) {
             System.out.println("Reserva Luis rechazada: " + e.getMessage());
         }
+        
+        //HIDE METHOD
+        //al cambiar la visibilidad de la lista a private en la clase Funcion
+        //la propiedad ocupados quedó protegida por el metodo de acceso y ya no se puede acceder 
+        //directamente desde fuera de la clase (como antes con f.ocupados)
         System.out.println("Ocupados: " + f.getOcupados());
 
         Reserva reservaAna = s.buscar(r1);
