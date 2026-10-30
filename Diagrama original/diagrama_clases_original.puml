@@ -1,0 +1,70 @@
+@startuml diagrama_clases_original
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+skinparam padding 6
+skinparam roundcorner 4
+
+package cine {
+
+    class Main {
+        + {static} main(args: String[]): void
+    }
+
+    class SistemaReservas {
+        + db: Map<Integer, Object>
+        + contador: int
+        + hacer(nombre: String, email: String, socio: boolean, f: Funcion, filas: char[], numeros: int[], imprimir: boolean, canal: String): int
+        + calcularPrecio(r: Reserva, tipo: String): double
+        + descuentoDel15(p: double): double
+        + descuentoDel25(p: double): double
+        + cancelar(id: int): int
+        + buscar(id: int): Object
+    }
+
+    class Funcion {
+        + titulo: String
+        + sala: int
+        + hora: String
+        + precio: double
+        + ocupados: List<String>
+        + Funcion(titulo: String, sala: int, hora: String, precio: double)
+        + ocupar(fila: char, numero: int): void
+        + setPrecio(precio: double): void
+    }
+
+    class Reserva {
+        + id: int
+        + cliente: Cliente
+        + funcion: Funcion
+        + asientos: List<String>
+        + precio: double
+        + cancelada: boolean
+        + Reserva(id: int, cliente: Cliente, funcion: Funcion, asientos: List<String>)
+        + setCancelada(cancelada: boolean): void
+    }
+
+    class Cliente {
+        + nombre: String
+        + email: String
+        + socio: boolean
+        + Cliente(nombre: String, email: String, socio: boolean)
+    }
+
+    ' Relaciones de Main
+    Main .down.> SistemaReservas : <<create>>
+    Main .down.> Funcion : <<create>>
+    Main .down.> Reserva : <<use>>
+
+    ' Relaciones de SistemaReservas
+    SistemaReservas "1" o-down-> "*" Reserva : +db
+    SistemaReservas .down.> Cliente : <<create>>
+    SistemaReservas .right.> Funcion : <<use>>
+
+    ' Relaciones de Reserva
+    Reserva "1" -right-> "1" Cliente : +cliente
+    Reserva "1" -down-> "1" Funcion : +funcion
+}
+@enduml
