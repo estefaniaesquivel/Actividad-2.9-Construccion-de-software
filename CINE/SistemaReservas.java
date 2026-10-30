@@ -52,11 +52,13 @@ public class SistemaReservas {
     public int cancelar(int id) {
         Reserva r = (Reserva) db.get(id);
         if (r == null) return -1;
-        if (r.cancelada) return -2;
+        if (r.isCancelada()) return -2;
+        
         for (String a : r.asientos) {
-            r.funcion.ocupados.remove(a);
+            r.funcion.desocupar(a); // Modifica la lista internamente sin romper el encapsulamiento
         }
-        r.setCancelada(true);
+        
+        r.cancelar(); // Cambia el estado a true (en vez de solo consultar r.isCancelada())
         return 0;
     }
 

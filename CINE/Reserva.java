@@ -6,16 +6,23 @@ public class Reserva {
     public Funcion funcion;
     public List<String> asientos;
     public double precio;
-    public boolean cancelada;
+    private boolean cancelada; // Se encapsula para evitar modificaciones directas
 
     public Reserva(int id, Cliente cliente, Funcion funcion, List<String> asientos) {
         this.id = id;
         this.cliente = cliente;
         this.funcion = funcion;
         this.asientos = asientos;
+        this.cancelada = false; // Valor inicial por defecto
     }
 
-    public void setCancelada(boolean cancelada) {
-        this.cancelada = cancelada;
+    // TECNICA APLICADA: Remove setting method
+    // REFACTOR: Reemplaza a setCancelada(boolean) con una acción de dominio clara
+    public void cancelar() {
+        this.cancelada = true;
+    }
+
+    public boolean isCancelada() {
+        return this.cancelada;
     }
 }
