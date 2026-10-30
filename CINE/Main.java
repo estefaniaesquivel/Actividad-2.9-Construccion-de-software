@@ -5,10 +5,12 @@ public class Main {
         SistemaReservas s = new SistemaReservas();
         Funcion f = new Funcion("Interestelar", 3, "20:30", 12.0);
 
+        // Se crea el Cliente completo y se pasan los asientos como una lista de codigos.
         Cliente anaCliente = new Cliente("Ana", "ana@mail.com", true);
         int r1 = s.crearReserva(anaCliente, f, Arrays.asList("F5", "F6"), "App");
         System.out.println("Reserva Ana: " + r1);
 
+        // Si un asiento ya esta ocupado, se informa el error sin detener el resto del ejemplo.
         Cliente luisCliente = new Cliente("Luis", "luis@mail.com", false);
         try {
             int r2 = s.crearReserva(luisCliente, f, Arrays.asList("F7", "F6"), "Taquilla");
